@@ -133,6 +133,21 @@ main {
     height: auto;
 }
 
+/* --- 追加：画面が狭くなった時のスタイル --- */
+@media (max-width: 900px) {
+    .logo-container {
+        padding-bottom: 50px; /* キャラを出すための底上げ */
+        text-align: center;   /* ロゴも中央に */
+    }
+
+    .mini-chara-img {
+        position: static;     /* 重なりを解除 */
+        display: block;       /* ブロック要素にして */
+        margin: 20px auto 0;  /* 中央寄せ */
+        width: 150px;         /* 少し小さく調整 */
+    }
+}
+
 /* セクションの大見出し用 */
 .section-title {
     font-family: 'Shippori Mincho', serif;
