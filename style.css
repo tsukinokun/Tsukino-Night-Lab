@@ -1,0 +1,220 @@
+body {
+    margin: 0;
+    color: white;
+    /* 背景画像をbodyに設定するのをやめ、::beforeに移動します */
+    position: relative;
+    z-index: 0;
+}
+
+/* 背景画像とオーバーレイの管理 */
+body::before {
+    content: "";
+    position: fixed; /* 背景を固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/TopBackGround.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* 背景を暗くする膜（最初は少し暗い 0.3 くらい） */
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: darken; /* 画像と色を合成 */
+    
+    transition: background-color 0.5s ease; /* 暗くなるアニメーション */
+    z-index: -1; /* コンテンツの下に配置 */
+}
+
+/* スクロール時にJSでクラスを追加して暗くする */
+body.scrolled::before {
+    background-color: rgba(0, 0, 0, 0.5); /* スクロールしたらもっと暗くする */
+}
+
+/* 瞬間移動じゃなくて、緩やかにスクロール */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 固定ヘッダー */
+.header-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* これがないとpadding分だけはみ出す */
+    width: 100%;
+    height: 70px;
+    /* ← ロゴの高さはここの高さに合わせる */
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(10, 10, 20, 0.8);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    z-index: 1000;
+}
+
+/* スクロール時にJSで付与するクラス */
+.header-wrapper.scrolled {
+    background: rgba(10, 10, 20, 0.95);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* その他のスタイルは維持 */
+.header-nav {
+    display: flex;
+    white-space: nowrap;
+}
+
+.header-logo {
+    height: 100%;
+    flex-shrink: 0;
+}
+
+/* ロゴ画像（縦幅に収める） */
+.header-logo img {
+    height: 100%;
+    /* ← ヘッダーの高さにぴったり合わせる */
+    object-fit: contain;
+}
+
+/* メニュー */
+.header-nav a {
+    font-family: 'Shippori Mincho', serif;
+    margin-left: 25px;
+    color: #ddd;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.header-nav a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+main {
+    padding-top: 0px;
+}
+
+/* ロゴエリア全体を中央に */
+.top-logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;  /* ヘッダーとの距離 */
+    padding-bottom: 50px;
+}
+
+/* ロゴとキャラを内包する親 */
+.logo-container {
+    position: relative;     /* キャラ配置の基準 */
+    display: inline-block;  /* 中身のサイズにフィットさせる */
+    padding: 20px;          /* ここが「パディング」としての余白になる */
+}
+
+/* メインロゴ */
+.main-logo-img {
+    width: 70vw;
+    max-width: 600px;
+    height: auto;
+    display: block; /* 隙間防止 */
+}
+
+/* 右下に配置するミニキャラ */
+.mini-chara-img {
+    position: absolute;
+    right: -100px;  /* .logo-containerのpaddingと同じにすると内側の角に合う */
+    bottom: -100px; /* 同上 */
+    width: 256px;
+    height: auto;
+}
+
+.about-container {
+    display: flex;          /* 左右に並べる */
+    align-items: center;    /* 縦方向中央揃え */
+    justify-content: space-between;
+    gap: 40px;              /* テキストと画像の間の隙間 */
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 50px;
+    background: rgba(10, 10, 20, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+.about-text {
+    flex: 1; /* テキストが余白を埋めるように広がる */
+}
+
+.about-image {
+    flex: 0 0 300px; /* 画像の幅を固定 */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* プロフィール情報のリストをきれいに整える */
+.profile-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.profile-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+/* SNSリンクのコンテナ（修正） */
+.sns-links {
+    display: flex;
+    justify-content: flex-start; /* 左寄せに変更 */
+    gap: 20px;                   /* アイコンの間隔 */
+    margin-top: 20px;
+}
+
+/* 各アイコンのスタイル（サイズを大きく） */
+.sns-links a img {
+    width: 60px;      /* 40pxから60pxに大きく */
+    height: 60px;
+    transition: 0.3s;
+    filter: brightness(0.9);
+}
+
+/* マウスホバーで明るくする */
+.sns-links a:hover img {
+    filter: brightness(1.3);
+    transform: scale(1.1);
+}
+
+footer {
+    background: rgba(10, 10, 20, 0.9);
+    padding: 30px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
