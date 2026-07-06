@@ -232,6 +232,26 @@ main {
     height: auto;
 }
 
+/* スマホ向け：画像がはみ出さないようにする設定 */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column-reverse; /* 画像が上、テキストが下になる */
+        padding: 20px; /* 余白を少し詰める */
+    }
+
+    .about-image {
+        flex: 0 0 auto; /* 幅の固定を解除 */
+        max-width: 250px; /* 画像の最大サイズ */
+        margin: 0 auto 20px auto; /* 下に隙間を開ける */
+    }
+
+    .about-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
 /* プロフィール情報のリストをきれいに整える */
 .profile-list {
     list-style: none;
