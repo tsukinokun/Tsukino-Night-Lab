@@ -29,7 +29,7 @@ body::before {
 
 /* スクロール時にJSでクラスを追加して暗くする */
 body.scrolled::before {
-    background-color: rgba(0, 0, 0, 0.5); /* スクロールしたらもっと暗くする */
+    background-color: rgba(0, 0, 0, 0.7); /* スクロールしたらもっと暗くする */
 }
 
 /* 瞬間移動じゃなくて、緩やかにスクロール */
@@ -133,6 +133,15 @@ main {
     bottom: -100px; /* 同上 */
     width: 256px;
     height: auto;
+}
+
+/* セクションの大見出し用 */
+.section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
 }
 
 .about-container {
@@ -248,15 +257,6 @@ footer {
 .work-visual img {
     width: 100%;
     border-radius: 10px;
-}
-
-/* セクションの大見出し用 */
-.works-section-title {
-    font-family: 'Shippori Mincho', serif;
-    font-size: 36px;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #fff;
 }
 
 /* 個別のプロジェクト名用 */
