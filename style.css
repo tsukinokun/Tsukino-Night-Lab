@@ -395,3 +395,17 @@ footer {
         gap: 20px;
     }
 }
+
+/* アニメーション用クラス */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* visibilityは使わない */
+}
+
+/* 表示された時の状態 */
+.fade-in-up.active {
+    opacity: 1 !important; /* 強制的に表示 */
+    transform: translateY(0) !important;
+}
