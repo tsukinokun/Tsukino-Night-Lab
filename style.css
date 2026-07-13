@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     color: white;
-    background: rgba(0, 0, 0, 0.5); /* 全体にうっすら膜を張る */
+    background: rgba(0, 0, 0, 0.5);
+    /* 全体にうっすら膜を張る */
     min-height: 100vh;
     transition: background-color 0.5s ease;
 }
@@ -15,6 +16,9 @@ body.scrolled {
 
 /* 瞬間移動じゃなくて、緩やかにスクロール */
 html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+
     margin: 0;
     padding: 0;
     width: 100%;
@@ -23,8 +27,10 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* これがモバイルでも画面いっぱいに固定する鍵 */
-    background-color: #0a0a14; /* 画像が読み込まれるまでの背景色を黒に */
+    background-attachment: fixed;
+    /* これがモバイルでも画面いっぱいに固定する鍵 */
+    background-color: #0a0a14;
+    /* 画像が読み込まれるまでの背景色を黒に */
 }
 
 /* 固定ヘッダー */
@@ -106,11 +112,8 @@ main {
 /* ロゴとキャラを内包する親 */
 .logo-container {
     position: relative;
-    /* キャラ配置の基準 */
     display: inline-block;
-    /* 中身のサイズにフィットさせる */
     padding: 20px;
-    /* ここが「パディング」としての余白になる */
 }
 
 /* メインロゴ */
@@ -136,15 +139,21 @@ main {
 /* --- 追加：画面が狭くなった時のスタイル --- */
 @media (max-width: 900px) {
     .logo-container {
-        padding-bottom: 50px; /* キャラを出すための底上げ */
-        text-align: center;   /* ロゴも中央に */
+        padding-bottom: 50px;
+        /* キャラを出すための底上げ */
+        text-align: center;
+        /* ロゴも中央に */
     }
 
     .mini-chara-img {
-        position: static;     /* 重なりを解除 */
-        display: block;       /* ブロック要素にして */
-        margin: 20px auto 0;  /* 中央寄せ */
-        width: 150px;         /* 少し小さく調整 */
+        position: static;
+        /* 重なりを解除 */
+        display: block;
+        /* ブロック要素にして */
+        margin: 20px auto 0;
+        /* 中央寄せ */
+        width: 150px;
+        /* 少し小さく調整 */
     }
 }
 
@@ -235,14 +244,19 @@ main {
 /* スマホ向け：画像がはみ出さないようにする設定 */
 @media (max-width: 768px) {
     .about-container {
-        flex-direction: column-reverse; /* 画像が上、テキストが下になる */
-        padding: 20px; /* 余白を少し詰める */
+        flex-direction: column-reverse;
+        /* 画像が上、テキストが下になる */
+        padding: 20px;
+        /* 余白を少し詰める */
     }
 
     .about-image {
-        flex: 0 0 auto; /* 幅の固定を解除 */
-        max-width: 250px; /* 画像の最大サイズ */
-        margin: 0 auto 20px auto; /* 下に隙間を開ける */
+        flex: 0 0 auto;
+        /* 幅の固定を解除 */
+        max-width: 250px;
+        /* 画像の最大サイズ */
+        margin: 0 auto 20px auto;
+        /* 下に隙間を開ける */
     }
 
     .about-image img {
@@ -406,6 +420,7 @@ footer {
 
 /* 表示された時の状態 */
 .fade-in-up.active {
-    opacity: 1 !important; /* 強制的に表示 */
+    opacity: 1 !important;
+    /* 強制的に表示 */
     transform: translateY(0) !important;
 }
