@@ -77,8 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 表示したいリポジトリ名と、個別に書きたい詳細な技術スタックを設定
     const ossRepos = [
-        { path: "tsukinokun/TsukinoEventBus", tech: "C++" },
-        { path: "tsukinokun/TsukinoRegistryFactory", tech: "C++" },
+        {
+            path: "tsukinokun/TsukinoEventBus",
+            tech: "C++",
+            description: "C++17 向けの軽量イベントバスライブラリです。<br>RAII による安全な購読管理、優先度制御、継承対応、コールバック更新などをサポートしています。",
+            qiitaUrl: "https://qiita.com/tsukino_/items/58d449d52fb9acaac2d7"
+        },
+        {
+            path: "tsukinokun/TsukinoRegistryFactory",
+            tech: "C++",
+            description: "文字列キーから任意のクラスを自動生成できる軽量ヘッダーオンリーの C++ ライブラリです。<br> クラスをマクロで登録するだけで、静的初期化のタイミングで自動的にファクトリへ登録され、インスタンス生成も容易です。",
+            qiitaUrl: "https://qiita.com/tsukino_/items/0b4dbe071b90c739023d"
+        },
     ];
 
     const ossContainer = document.getElementById("oss-projects-container");
@@ -100,27 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         article.classList.add("reverse");
                     }
 
-                    // GitHub上のメイン言語を基準に画像パスを設定（エラー時はGitHubアイコン）
-                    const mainLanguage = data.language || "C++";
-                    const iconSrc = data.open_graph_image_url || `images/${mainLanguage}Icon.png`;
+                    // GitHub APIからはOGP画像URLだけを使う
+                    const iconSrc = `https://opengraph.githubassets.com/1/${repoInfo.path}` || `images/GitubIcon.png`; // デフォルト画像があれば指定
 
-                    // 内部HTMLの構築（GitHubからスター数や説明文を動的流し込み）
+                    // Qiitaボタン（必要であれば残す）
+                    const qiitaLink = repoInfo.qiitaUrl
+                        ? `<a href="${repoInfo.qiitaUrl}" class="work-link qiita-link" target="_blank">
+                            <img src="images/QiitaIcon.png" alt="Qiita" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">
+                                解説記事
+                            </a>`
+                        : "";
+
+                    // HTMLの構築（スター表示を削除し、画像をシンプルに配置）
                     article.innerHTML = `
                         <div class="work-visual oss-icon-wrapper">
-                            <img src="${iconSrc}" alt="${mainLanguage} Logo" class="oss-main-icon" onerror="this.src='images/GithubIcon.png'">
-                            <div class="oss-stats">
-                                <span class="oss-stat-item">⭐ ${data.stargazers_count}</span>
-                            </div>
+                            <a href="${data.html_url}" target="_blank">
+                                <img src="${iconSrc}" alt="${data.name} Preview" class="oss-main-icon" onerror="this.src='images/GithubIcon.png'">
+                            </a>
                         </div>
                         <div class="work-text">
                             <h3 class="work-title">${data.name}</h3>
                             <p class="work-tech"><strong>Tech Stack:</strong> ${repoInfo.tech}</p>
-                            <div class="work-links-area">
-                                <a href="${data.html_url}" class="work-link" target="_blank">GitHub Link</a>
-                            </div>
-                            <p class="work-desc">
-                                ${data.description || "説明文が設定されていません。"}
-                            </p>
+                        <div class="work-links-area">
+                        <a href="${data.html_url}" class="work-link" target="_blank">GitHub Link</a>
+                            ${qiitaLink}
+                        </div>
+                         <p class="work-desc">${repoInfo.description}</p>
                         </div>
                     `;
 
