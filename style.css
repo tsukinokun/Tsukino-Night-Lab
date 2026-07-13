@@ -420,3 +420,82 @@ footer {
     /* 強制的に表示 */
     transform: translateY(0) !important;
 }
+
+/* ==========================================================================
+   OSS Projects Section
+   ========================================================================== */
+.oss-projects-section {
+    max-width: 1000px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+/* OSSアイコンを表示するためのコンテナ調整 */
+.oss-icon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 40px 20px;
+    min-height: 200px;
+    position: relative;
+}
+
+/* メインのツール/言語アイコン */
+.oss-main-icon {
+    width: 100px !important; /* WORKSの画像より小さく、アイコンらしく */
+    height: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.2));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.work-card:hover .oss-main-icon {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+}
+
+/* スター数やバージョンなどの簡易ステータス表示 */
+.oss-stats {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #aaa;
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oss-stat-item img {
+    width: 14px !important;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 4px;
+    display: inline-block !important;
+}
+
+/* 複数リンク（GitHubとパッケージマネージャー等）を並べられるように調整 */
+.work-links-area {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.work-links-area .work-link {
+    margin-bottom: 0; /* マージンをリセットしてflexで管理 */
+}
+
+/* スマホ対応の微調整 */
+@media (max-width: 768px) {
+    .oss-icon-wrapper {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 30px 20px;
+    }
+}
