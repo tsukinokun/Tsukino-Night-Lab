@@ -28,9 +28,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* これがモバイルでも画面いっぱいに固定する鍵 */
     background-color: #0a0a14;
-    /* 画像が読み込まれるまでの背景色を黒に */
 }
 
 /* 固定ヘッダー */
@@ -39,10 +37,8 @@ html {
     top: 0;
     left: 0;
     box-sizing: border-box;
-    /* これがないとpadding分だけはみ出す */
     width: 100%;
     height: 70px;
-    /* ← ロゴの高さはここの高さに合わせる */
     padding: 0 30px;
 
     display: flex;
