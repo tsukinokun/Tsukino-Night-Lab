@@ -124,9 +124,9 @@ async function fetchAndRenderOSS() {
                         <div class="work-text">
                             <h3 class="work-title">${data.name}</h3>
                             <p class="work-tech"><strong>Tech Stack:</strong> ${repoInfo.tech}</p>
-                            <div class="work-links-area">
-                                <a href="${data.html_url}" class="work-link" target="_blank" rel="noopener noreferrer">GitHub Link</a>
-                                ${qiitaLink}
+                             <div class="work-links-area">
+                                 <a href="${data.html_url}" class="work-link" target="_blank" rel="noopener noreferrer"><img src="images/GithubIcon.png" alt="" class="github-icon">GitHub Link</a>
+                                 ${qiitaLink}
                             </div>
                             <p class="work-desc">${repoInfo.description}</p>
                         </div>

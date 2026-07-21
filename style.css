@@ -346,7 +346,8 @@ footer {
 }
 
 .work-link {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.1);
     padding: 5px 12px;
@@ -354,6 +355,13 @@ footer {
     text-decoration: none;
     margin-bottom: 15px;
     transition: var(--transition-speed);
+}
+
+.work-link .github-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    filter: brightness(0) invert(1);
 }
 
 .work-link:hover {
