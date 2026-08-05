@@ -84,6 +84,12 @@ async function fetchAndRenderOSS() {
             description: "文字列キーから任意のクラスを自動生成できる軽量ヘッダーオンリーの C++ ライブラリです。<br> クラスをマクロで登録するだけで、静的初期化のタイミングで自動的にファクトリへ登録され、インスタンス生成も容易です。",
             qiitaUrl: "https://qiita.com/tsukino_/items/0b4dbe071b90c739023d"
         },
+        {
+            path: "tsukinokun/asset-exporter-pro",
+            tech: "Python",
+            description: "選択オブジェクトの一括リネームと、FBX / OBJ / GLB 形式への一括エクスポートを行う Blender アドオンです。",
+            qiitaUrl: "https://qiita.com/tsukino_/items/32553d65a648176d5178"
+        },
     ];
 
     const ossContainer = document.getElementById("oss-projects-container");
