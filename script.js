@@ -86,9 +86,15 @@ async function fetchAndRenderOSS() {
         },
         {
             path: "tsukinokun/asset-exporter-pro",
-            tech: "Python",
+            tech: "Python,bpy,Blender",
             description: "選択オブジェクトの一括リネームと、FBX / OBJ / GLB 形式への一括エクスポートを行う Blender アドオンです。",
             qiitaUrl: "https://qiita.com/tsukino_/items/32553d65a648176d5178"
+        },
+        {
+            path: "tsukinokun/UnityAssetPackageBuilder",
+            tech: "C#,Unity",
+            description: "フォルダ構造の自動作成、MeshとTextureからMaterial・Prefabの自動生成、そしてUnityPackageのエクスポートを一貫してサポートする、Unityのエディタ拡張ツールです。",
+            qiitaUrl: "https://qiita.com/tsukino_/items/751800ac3de336bf8210"
         },
     ];
 
