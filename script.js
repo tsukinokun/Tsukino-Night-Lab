@@ -91,6 +91,12 @@ async function fetchAndRenderOSS() {
             qiitaUrl: "https://qiita.com/tsukino_/items/32553d65a648176d5178"
         },
         {
+            path: "tsukinokun/ImportFromZip",
+            tech: "Python,bpy,Blender",
+            description: "Blenderに、.zip アーカイブの中身を直接インポートできる機能を追加する シンプルなアドオンです。手動でZIPを解凍する手間が不要になります。",
+            qiitaUrl: "https://qiita.com/tsukino_/items/b3dda3704b48267863f8"
+        },
+        {
             path: "tsukinokun/UnityAssetPackageBuilder",
             tech: "C#,Unity",
             description: "フォルダ構造の自動作成、MeshとTextureからMaterial・Prefabの自動生成、そしてUnityPackageのエクスポートを一貫してサポートする、Unityのエディタ拡張ツールです。",
