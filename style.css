@@ -364,6 +364,13 @@ footer {
     filter: brightness(0) invert(1);
 }
 
+.work-link .movie-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    filter: brightness(0) invert(1);
+}
+
 .work-link:hover {
     background: rgba(255, 255, 255, 0.3);
 }
