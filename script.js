@@ -120,10 +120,6 @@ async function fetchAndRenderOSS() {
                     const article = document.createElement("article");
                     article.className = "work-card fade-in-up";
 
-                    if (index % 2 !== 0) {
-                        article.classList.add("reverse");
-                    }
-
                     const iconSrc = `https://opengraph.githubassets.com/1/${repoInfo.path}`;
 
                     const qiitaLink = repoInfo.qiitaUrl

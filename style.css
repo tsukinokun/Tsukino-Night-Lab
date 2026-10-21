@@ -318,7 +318,7 @@ footer {
     backdrop-filter: var(--blur-amount);
 }
 
-.work-card.reverse {
+.work-card:nth-of-type(even) {
     flex-direction: row-reverse;
 }
 
@@ -383,7 +383,7 @@ footer {
 
 @media (max-width: 768px) {
     .work-card,
-    .work-card.reverse {
+    .work-card:nth-of-type(even) {
         flex-direction: column;
         gap: 20px;
     }
