@@ -16,24 +16,30 @@ function initScrollEffects() {
 }
 
 function fetchQiitaNews() {
-    const rssUrl = "https://qiita.com/tsukino_/feed";
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+    const apiUrl = "https://qiita.com/api/v2/users/tsukino_/items?per_page=5";
     const newsList = document.getElementById('news-list');
 
     if (!newsList) return;
 
     fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'ok') {
+        .then(response => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+        })
+        .then(items => {
+            if (Array.isArray(items)) {
                 newsList.innerHTML = '';
-                data.items.slice(0, 5).forEach(item => {
-                    const date = item.pubDate.split(' ')[0];
+                items.forEach(item => {
                     const li = document.createElement('li');
-                    li.innerHTML = `
-                        <span class="news-date">${date}</span>
-                        <a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a>
-                    `;
+                    const date = document.createElement('span');
+                    date.className = 'news-date';
+                    date.textContent = item.created_at.slice(0, 10);
+                    const link = document.createElement('a');
+                    link.href = item.url;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.textContent = item.title;
+                    li.append(date, link);
                     newsList.appendChild(li);
                 });
             } else {
